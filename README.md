@@ -1,16 +1,16 @@
 # Regex Tutorial Starter Code
 
 Regular Expressions
-Regular Expressions, or RegEx, are helpful tools used across many programming languages to find a specified combination of characters. A RegEx allows the programmer to search for any variation of a string matching a pattern instead of being limited to a specific, or "literal", query. For example, in a large database with multiple email address entries, a RegEx pattern search of [any name]@[any domain].[any extension] will easily find all email addresses.
+Regular Expressions, or RegEx, are helpful tools used across many programming languages to find a specified combination of characters. A RegEx allows the programmer to search for any variation of a string matching a pattern instead of being limited to a specific, or "literal", query. 
 
-In addition to being powerful search tools, regular expressions can be applied to validate formatting (e.g. passwords and email address), perform quick replacements, and assist with string splitting.
+In addition to being powerful search tools, regular expressions can be applied to validate formatting (e.g. passwords and email address for your ecommerce websites), or perform quick replacements.
 
 # Summary
-In this gist, we will introduce JavaScript regular expressions using the following RegEx for matching an email address.
+In this gist, we will introduce JavaScript regular expressions using the following RegEx for matching an email address shown as follow:
 
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
-We will dissect the above RegEx into components and elaborate on each.
+We will analyze the above RegEx into components and elaborate on each.
 
 ## Table of Contents 
 * [Anchors-and-Boundaries](#Anchors-and-Boundaries)
@@ -108,5 +108,8 @@ dots
 The match also cannot have any characters preceeding or following it, including spaces.
 
 We've covered enough parts today, there are plenty to go on next time. For more information on regular expressions, check out [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)!
+
+Hint: make sure to use the right syntax for inserting a URL in your markdown file.
+[label](http://example.com)
 
 Thank you. 
