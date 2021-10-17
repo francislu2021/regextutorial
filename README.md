@@ -12,13 +12,13 @@ In this gist, we will introduce JavaScript regular expressions using the followi
 
 We will dissect the above RegEx into components and elaborate on each.
 
-# Table of Contents 
-(# Anchors and Boundaries)
-(# )Grouping and Capturing)
-(# Bracket Expressions)
-Character Classes
-Quantifiers
-Conclusion
+## Table of Contents 
+* [Anchors and Boundaries](#Anchors and Boundaries)
+* [Grouping and Capturing](#Grouping and Capturing)
+* [Bracket Expressions](#Bracket Expressions)
+* [Character Classes](#Character Classes)
+* [Quantifiers](#Quantifiers)
+* [Conclusion](#Conclusion)
 
 # Regex Components
 
