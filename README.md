@@ -1,63 +1,109 @@
 # Regex Tutorial Starter Code
 
-Regex-Tutorial by Luknator-the full stacker
+Regular Expressions
+Regular Expressions, or RegEx, are helpful tools used across many programming languages to find a specified combination of characters. A RegEx allows the programmer to search for any variation of a string matching a pattern instead of being limited to a specific, or "literal", query. For example, in a large database with multiple email address entries, a RegEx pattern search of [any name]@[any domain].[any extension] will easily find all email addresses.
 
-### Summary
-This is a brief tutorial breakdown on how to use Regex rules for matching a Hex Value in a body of text. /^#?([a-f0-9]{6}|[a-f0-9]{3})$/ is the syntax that I will be applying for demonstration purpose.
+In addition to being powerful search tools, regular expressions can be applied to validate formatting (e.g. passwords and email address), perform quick replacements, and assist with string splitting.
 
-Hex Code is a way to identify color. It is usually in a 6-digit alphanumeric sequence.
+# Summary
+In this gist, we will introduce JavaScript regular expressions using the following RegEx for matching an email address.
 
-The regex string I am using will return a # Number sign character followed by either a 6 or 3 character length code with only lowercase letters a,b,c,d,e,or f or numbers 0,1,2,3,4,5,6,7,8, or 9.
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
+We will dissect the above RegEx into components and elaborate on each.
 
-### Table of Contents
-1. Anchors
-2. Quantifiers
-3. OR Operator
-4. Character Classes
-5. Grouping and Capturing
-6. Greedy and Lazy Match
-7. Boundaries
+# Table of Contents
+Anchors and Boundaries
+Grouping and Capturing
+Bracket Expressions
+Character Classes
+Quantifiers
+Conclusion
 
-### Regex Components
-## Anchors
-The starting ^ caret and ending $ dollar sign are both anchors in the example string. /^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-1. The ^caret matches at the start of the string the regex pattern is applied to.
-2. The # Number Sign following the starting ^caret is a literal character and a #Number Sign MUST be at the start of the string.
-3. The $ dollar sign matches at the end of the string the regex pattern is applied to. This signifies the end of the string.
+# Regex Components
 
-### Quantifiers
-Each quanifier denotes how many times the previous token will be matched. There are 3 quanitfiers in the example syntax. /^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-1. The first $ Dollar Sign ( which I will also go over in the Greedy section) This signifies that the # Number Sign will match 0-1 times.
-2. {6} This signifies that the previous token [a-f0-9] will have 6 characters match within that set.
-3. {3} This signifies that the previous token [a-f0-9] will have 3 characters match within that set.
+# Anchors and Boundaries
+In our regular expression for matching an email address, we have surrounded our RegEx search with the anchors ^ and $ to identify that the enclosed search pattern should not have any other characters, including spaces, before or after it. It should also be noted that all regular expression searches begin and end with a forward slash (/).
 
-### OR Operator
-The example syntax uses an OR operator known as | Vertical line or pipe. There is a | Pipe between two characters classes. This creates 2 alternative groups. This allows the search to find and match either group.
+Anchors are special characters that identify the position of the searched text. A caret (^) anchor identifies the beginning of a string while a dollar sign ($) identifies the end of a string. A word boundary anchor (\b) is used to identify the beginning or end of a word. Without anchors, the RegEx will search for the identified pattern within any position of a given string.
 
-/^#?([a-f0-9]{6}|[a-f0-9]{3})$/
+Example
 
-1. The first alternative is before the | pipe [a-f0-9] will return 6 characters.
+A RegEx search of /hat/ on "that hat" will return "that hat" with both instances of the letter combination "hat" because it does not discriminate the positioning within the string. A search of /hat$/ will find "that hat," matching only the "hat" located at the end of the string. Additionally, /^hat/ will return no matches, as there are no instances of the pattern "hat" located at the beginning of a string. Finally, to locate only instances of the word "hat," enclose the RegEx search in word boundaries (/\bhat\b/).
 
-2. The second alternative after the | Pipe will return 3 characters.
+# Grouping and Capturing
+After removing our anchors from our email RegEx, we are left with the following.
 
-### Character Classes
-Character classes are found betwen [...] square brackets. They are used to create a list of allowable characters. In the example syntax there are two character classes. They look exactly the same because they are, however the quantifier is what makes each class return a different number of characters.
+([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
 
-The example uses [a-f0-9]
+Note that there are three sets of parentheses in this regular expression: (...)@(...)\.(...) where the ... replaces expressions we will discuss later.
 
-1) a-f = This is the range that matches a case sensitive single character of: a,b,c,d,e, or f.
-2) 0-9 = This is the range that matches a case sensitive single digit of: 0,1,2,3,4,5,6,7,8, or 9
+Parentheses do not affect the results of the search pattern, but instead group and capture sections of the pattern together. By default, the entire string is Group 0. Each subsequent parenthetical captured group is Group 1, Group 2, Group 3, etc. Captured groups can then be referenced as needed.
 
-### Grouping and Capturing
-Anything found inside of ( round brackets ) creates a capture group. Everything inside that (...) is treated as a single unit. So with the example syntax /^#?([a-f0-9]{6}|[a-f0-9]{3})$/ there is one capture group with two characters sets seperated by an OR Operator.
+Example
+In the following example, we will use our email RegEx, assigned to the re variable, on the email address "johndoe@email.com," assigned in the email variable. We can then refer to specific groups within our email address as needed.
 
-### Greedy and Lazy Match
-The single ? by defult is considered greedy. This means it will match as many occurrences of the given pattern as possible. A lazy match would be denoted as a double ??. Lazy means as few occurrences of the pattern as possible, however our example syntax is considered greedy not lazy.
+const email = 'johndoe@email.com'
+const re = email.match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)
 
-### Boundaries
-Boundries used are the ^caret to siginify the start of the string and the $ dollar sign signifies the end of the string.
+console.log(re[0]) //=> prints "johndoe@email.com"
+console.log(re[1]) //=> prints "johndoe"
+console.log(re[2]) //=> prints "email"
+console.log(re[3]) //=> prints "com"
 
-If you still have any questions, please feel free to contact me. thank you!
+As you may have noticed, this looks similar to referencing an array, and that's because it is! Running console.log(re) would print an array of ['johndoe@email.com', 'johndoe', 'email', 'com'].
 
-Luknator tutorial
+# Bracket Expressions
+Next in our email RegEx, we have three sets of bracket expressions. Simply put, a bracket expression contains a list of characters enclosed in brackets ([ and ]). This will perform a search of any character found within this list. However, if the bracket expression begins with a caret (^), then the search will exclude all characters from that list.
+
+Example
+Our RegEx contains three bracket expressions: [a-z0-9_\.-], [\da-z\.-], and [a-z\.]. The character lists will be explained further in the next section.
+
+# Character Classes
+Character classes identify the set of characters to be matched and are often, but not exclusively, used in conjunction with bracket expressions.
+
+In our above bracket expressions, the following character sets are used:
+
+Character Class	Meaning
+a-z	Match any letter within the range of lowercase a to lowercase z.
+0-9	Match any number from 0 to 9.
+_	Match literal underscores.
+\.	Match literals dot (.). Dots have special functions in regular expression. The backslash (\) is used to escape the character.
+-	Match literal hyphens.
+\d	Match any digit from 0 to 9. Effectively the same as using 0-9.
+@	Match literal at signs. Found following the first parenthetical group in our email RegEx.
+
+Example
+A RegEx search of /\b[a-z]{4}\b/ on the string "today's date is 2/26" will match the word four-letter word "date". Although "2/26" is also a four-character string within the appropriate word boundaries, it contains characters that are not included in a-z.
+
+# Quantifiers
+Finally, quantifiers identify how the number of occurrences of the preceeding characters from either the literal character or character set. Our email RegEx uses a plus (+) and brace ({...}) quantifiers, as seen here: ([...]+)@([...]+)\.([...]{2,6}). The presence of the plus signifies a match for any of the characters found in the preceeding bracket expression at least one time. The brace specifies a range of matches from 2 to 6 of the characters found in the preceeding bracket expression.
+
+Example
+A RegEx search of /[a-z\d]{2, 8}@email\.com/ will match the email "l33tc0de@email.com" but not "ilove2code@email.com". The local-part of the latter is ten characters in length and does not meet the quantifier requirements.
+
+# Conclusion
+Now that we've dissected our email RegEx, let's put it back together and evaluate what our match might look like. Recall that the original RegEx is as follows.
+
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+This regular expression will match a string containing a combination of one or more characters consisting of...
+
+any lowercase letters from a-z
+any digit from 0-9
+underscores
+dots, or
+hyphens
+... followed by a literal @, followed by a combination of one or more characters consisting of...
+
+any digit from 0-9
+any lowercase letters from a-z
+dots, or
+hyphens
+... followed by a literal ., followed by a combination of two to six characters consisting of...
+
+any lowercase letters from a-z, or
+dots
+The match also cannot have any characters preceeding or following it, including spaces.
+
+We've covered enough parts today, there are plenty to go on next time. For more information on regular expressions, check out MDN Docs!
