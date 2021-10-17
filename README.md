@@ -107,4 +107,6 @@ any lowercase letters from a-z, or
 dots
 The match also cannot have any characters preceeding or following it, including spaces.
 
-We've covered enough parts today, there are plenty to go on next time. For more information on regular expressions, check out MDN Docs!
+We've covered enough parts today, there are plenty to go on next time. For more information on regular expressions, check out MDN Docs[website (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)][website]!
+
+Thank you. 
