@@ -13,13 +13,14 @@ In this gist, we will introduce JavaScript regular expressions using the followi
 We will dissect the above RegEx into components and elaborate on each.
 
 ## Table of Contents 
-* [Anchors and Boundaries](#Anchors and Boundaries)
-* [Grouping and Capturing](#Grouping and Capturing)
-* [Bracket Expressions](#Bracket Expressions)
-* [Character Classes](#Character Classes)
+* [Anchors-and-Boundaries](#Anchors-and-Boundaries)
+* [Grouping-and-Capturing](#Grouping-and-Capturing)
+* [Bracket-Expressions](#Bracket-Expressions)
+* [Character-Classes](#Character-Classes)
 * [Quantifiers](#Quantifiers)
 * [Conclusion](#Conclusion)
 
+Hints: Use "-" sign as a whitespace so that the anchors links can work. When anchor links work in your VS code editor, you should see a different color on the content you input and underlying line for (#) syntax.
 # Regex Components
 
 # Anchors and Boundaries
